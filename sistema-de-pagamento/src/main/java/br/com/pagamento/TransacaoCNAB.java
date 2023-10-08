@@ -1,3 +1,5 @@
+package br.com.pagamento;
+
 import java.math.BigDecimal;
 
 public record TransacaoCNAB(
