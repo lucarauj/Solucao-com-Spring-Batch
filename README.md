@@ -6,8 +6,10 @@
 
 - H2 Database
 - Spring Batch
+- Spring Web
 
 ### Anotações
 
 - @Configuration
 - @Bean
+
