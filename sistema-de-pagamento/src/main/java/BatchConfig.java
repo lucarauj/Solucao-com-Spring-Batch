@@ -7,6 +7,8 @@ import org.springframework.batch.core.step.builder.StepBuilder;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.batch.item.ItemReader;
 import org.springframework.batch.item.ItemWriter;
+import org.springframework.batch.item.database.JdbcBatchItemWriter;
+import org.springframework.batch.item.database.builder.JdbcBatchItemWriterBuilder;
 import org.springframework.batch.item.file.FlatFileItemReader;
 import org.springframework.batch.item.file.builder.FlatFileItemReaderBuilder;
 import org.springframework.batch.item.file.transform.Range;
@@ -15,6 +17,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.transaction.PlatformTransactionManager;
 
+import javax.sql.DataSource;
 import java.math.BigDecimal;
 
 @Configuration
@@ -95,5 +98,23 @@ public class BatchConfig {
 
             return transacao;
         };
+    }
+
+    @Bean
+    JdbcBatchItemWriter<Transacao> writer(DataSource dataSource) {
+        return new JdbcBatchItemWriterBuilder<Transacao>()
+                .dataSource(dataSource)
+                .sql("""
+                        INSERT INTO transacao (
+                        tipo, data, valor, cpf, cartao,
+                        hora, dono_loja, nome_loja
+                        ) VALUES (
+                        :tipo, :data, :valor, :cpf, :cartao,
+                        :hora, :donoDaLoja, :nomeDaLoja
+                        )
+                        """
+                )
+                .beanMapped()
+                .build();
     }
 }
