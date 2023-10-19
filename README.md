@@ -27,6 +27,8 @@
 
 ## Batch Config
 
+<br>
+
 ```
 @Bean
     Job job(Step step) {
@@ -39,6 +41,7 @@
 - cria e configura um trabalho (job).
 - define uma etapa inicial, um incrementador para rastrear execuções do job e outras configurações necessárias.
 
+<br>
 <br>
 
 ```
@@ -55,6 +58,7 @@
 - lê itens do tipo TransacaoCNAB, processa para obter Transacao e escreve os resultados. 
 - processa os itens em lote, lendo 1000 itens por vez e usa um gerenciador de transações (transactionManager) para controle de transações.
 
+<br>
 <br>
 
 ```
@@ -76,6 +80,7 @@
 - o leitor é criado com base em um recurso (resource) especificado no job parâmetros e é responsável por ler e transformar o conteúdo do arquivo em objetos TransacaoCNAB.
 
 <br>
+<br>
 
 ```
 @Bean
@@ -92,6 +97,7 @@
 - o método .beanMapped() é usado para mapear automaticamente as propriedades do objeto Transacao para os parâmetros SQL correspondentes.
 
 <br>
+<br>
 
 ```
  @Bean
@@ -107,6 +113,7 @@
 - utiliza um TaskExecutorJobLauncher para iniciar trabalhos em um SimpleAsyncTaskExecutor, permitindo que os trabalhos sejam executados de forma assíncrona, em paralelo com outras tarefas, se necessário. 
 - o jobRepository é configurado para lidar com o armazenamento e gerenciamento dos trabalhos. 
 
+<br>
 <br>
 
 ## Upload CNAB file:
@@ -143,6 +150,7 @@ public void uploadCnabFile(MultipartFile file) throws Exception {
 - jobLauncher.run(job, jobParameters):
 >*inicia a execução de um trabalho (job) em um sistema de processamento em lote (batch processing) usando o jobLauncher e os parâmetros definidos em jobParameters.*
 
+<br>
 <br>
 
 # 👨🏼‍🎓 Aluno
