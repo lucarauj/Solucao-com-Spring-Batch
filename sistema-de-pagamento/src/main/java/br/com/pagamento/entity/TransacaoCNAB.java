@@ -1,4 +1,4 @@
-package br.com.pagamento.domain;
+package br.com.pagamento.entity;
 
 import java.math.BigDecimal;
 

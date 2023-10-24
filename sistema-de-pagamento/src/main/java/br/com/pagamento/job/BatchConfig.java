@@ -1,7 +1,7 @@
 package br.com.pagamento.job;
 
-import br.com.pagamento.domain.Transacao;
-import br.com.pagamento.domain.TransacaoCNAB;
+import br.com.pagamento.entity.Transacao;
+import br.com.pagamento.entity.TransacaoCNAB;
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.Step;
 import org.springframework.batch.core.configuration.annotation.StepScope;

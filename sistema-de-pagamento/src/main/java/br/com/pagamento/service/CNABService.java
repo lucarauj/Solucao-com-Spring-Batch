@@ -1,4 +1,4 @@
-package br.com.pagamento.domain;
+package br.com.pagamento.service;
 
 import org.springframework.batch.core.Job;
 import org.springframework.batch.core.JobParametersBuilder;
@@ -31,7 +31,7 @@ public class CNABService {
         file.transferTo(targetLocation);
 
         var jobParameters = new JobParametersBuilder()
-                .addJobParameter("cnab", file.getOriginalFilename(), String.class, true)
+                .addJobParameter("cnab", file.getOriginalFilename(), String.class, false)
                 .addJobParameter("cnabFile", "file:" + targetLocation.toString(), String.class)
                 .toJobParameters();
 

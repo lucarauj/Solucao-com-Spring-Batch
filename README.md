@@ -11,13 +11,17 @@
 - H2 Database
 - Spring Batch
 - Spring Web
+- Spring Data JDBC
 
 ### Anotações
 
 - @Bean
+- @Column
 - @Configuration
 - @Controller
 - @ControllerAdvice
+- @GetMapping
+- @Id
 - @RequestParam
 - @RequestMapping
 - @Service
@@ -152,6 +156,43 @@ public void uploadCnabFile(MultipartFile file) throws Exception {
 >*inicia a execução de um trabalho (job) em um sistema de processamento em lote (batch processing) usando o jobLauncher e os parâmetros definidos em jobParameters.*
 
 <hr>
+<br>
+
+## Agrupando pesquisa por nome da loja e valor total:
+
+```
+public List<TransacaoReport> listTransacoesTotaisPorNomeDaLoja() {
+        var transacoes = repository.findAllByOrderByNomeDaLojaAscIdDesc();
+
+        var reportMap = new LinkedHashMap<String, TransacaoReport>();
+
+        transacoes.forEach(transacao -> {
+            String nomeDaLoja = transacao.nomeDaLoja();
+            BigDecimal valor = transacao.valor();
+
+            reportMap.compute(nomeDaLoja, (key, existingReport) -> {
+                var report = (existingReport != null) ? existingReport :
+                        new TransacaoReport(key, BigDecimal.ZERO, new ArrayList<>());
+                return report.addTotal(valor).addTransacao(transacao);
+            });
+        });
+        return new ArrayList<>(reportMap.values());
+    }
+```
+
+- var transacoes = repository.findAllByOrderByNomeDaLojaAscIdDesc():
+>*busca no banco todas as transações.*
+
+<br>
+
+- var reportMap = new LinkedHashMap<String, TransacaoReport>():
+>*cria um mapa para utilizar o nome da loja como chave.*
+
+<br>
+
+- reportMap.compute(nomeDaLoja, (key, existingReport) -> { var report = (existingReport != null) ? existingReport : new TransacaoReport(key, BigDecimal.ZERO, new ArrayList<>()):
+>*cria um novo objeto TransacaoReport se ainda não houver um existente no mapa com a mesma chave. Esse objeto será usado para acumular os totais.*
+
 <br>
 
 # 👨🏼‍🎓 Aluno

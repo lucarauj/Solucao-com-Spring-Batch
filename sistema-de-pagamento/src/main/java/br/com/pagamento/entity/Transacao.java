@@ -1,4 +1,7 @@
-package br.com.pagamento.domain;
+package br.com.pagamento.entity;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Column;
 
 import java.math.BigDecimal;
 import java.sql.Date;
@@ -7,6 +10,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 public record Transacao (
+        @Id
         Long id,
         Integer tipo,
         Date data,
@@ -14,7 +18,9 @@ public record Transacao (
         Long cpf,
         String cartao,
         Time hora,
+        @Column("DONO_LOJA")
         String donoDaLoja,
+        @Column("NOME_LOJA")
         String nomeDaLoja
 
 ) {

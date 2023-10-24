@@ -1,6 +1,6 @@
 package br.com.pagamento.web;
 
-import br.com.pagamento.domain.CNABService;
+import br.com.pagamento.service.CNABService;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
