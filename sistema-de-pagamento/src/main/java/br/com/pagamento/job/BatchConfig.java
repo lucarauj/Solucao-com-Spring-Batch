@@ -1,5 +1,6 @@
 package br.com.pagamento.job;
 
+import br.com.pagamento.entity.TipoTransacao;
 import br.com.pagamento.entity.Transacao;
 import br.com.pagamento.entity.TransacaoCNAB;
 import org.springframework.batch.core.Job;
@@ -91,6 +92,11 @@ public class BatchConfig {
     @Bean
     ItemProcessor<TransacaoCNAB, Transacao> processor() {
         return item -> {
+            var tipoTransacao = TipoTransacao.findByTipo(item.tipo());
+            var valorNormalizado = item.valor()
+                    .divide(new BigDecimal(100))
+                    .multiply(tipoTransacao.getSinal());
+
             var transacao = new Transacao(
                     null,
                     item.tipo(),
