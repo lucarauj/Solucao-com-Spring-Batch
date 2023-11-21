@@ -20,11 +20,15 @@
 - @Configuration
 - @Controller
 - @ControllerAdvice
+- @ExtendWith
 - @GetMapping
 - @Id
+- @InjectMocks
+- @Mock
 - @RequestParam
 - @RequestMapping
 - @Service
+- @Test
 - @Value
 
 <br>
@@ -195,9 +199,15 @@ public List<TransacaoReport> listTransacoesTotaisPorNomeDaLoja() {
 
 <br>
 
-## ????????????????????????????????????????????
+## Aplicando testes com JUnit
 
+- AAA 
 
+>*Arrange: fase onde o ambiente de teste é preparado, configurando os objetos e definindo o estado inicial necessário para o teste.*
+
+>*Act: fase onde é executada a ação ou operação que deseja testar. Este passo representa a interação com o sistema ou componente que está sendo testado.*
+
+>*Assert: fase onde é verificado se o resultado da ação realizada no passo anterior está de acordo com o esperado. Isso envolve a utilização de asserções para confirmar se o comportamento do sistema é conforme o planejado.*
 
 <br>
 
