@@ -20,6 +20,7 @@
 - @Configuration
 - @Controller
 - @ControllerAdvice
+- @CrossOrigin
 - @ExtendWith
 - @GetMapping
 - @Id
@@ -208,6 +209,47 @@ public List<TransacaoReport> listTransacoesTotaisPorNomeDaLoja() {
 >*Act: fase onde é executada a ação ou operação que deseja testar. Este passo representa a interação com o sistema ou componente que está sendo testado.*
 
 >*Assert: fase onde é verificado se o resultado da ação realizada no passo anterior está de acordo com o esperado. Isso envolve a utilização de asserções para confirmar se o comportamento do sistema é conforme o planejado.*
+
+<br>
+
+## Front-end com Vite + React
+
+- Instalação do Vite:
+>*npm install -g create-vite*
+
+- Criando o projeto:
+>*npx create-vite "nome-do-projeto" --template react*
+
+- Baixando as dependências:
+>*npm install*
+
+- Rodando o projeto:
+>*npm run dev*
+
+- Instalando a biblioteca Axios:
+>*npm instal axios*
+
+<br>
+
+## Utilizando tailwindcss para estilizar o projeto:
+
+- https://tailwindcss.com/docs/guides/vite
+- npm install -D tailwindcss postcss autoprefixer
+- npx tailwindcss init -p
+- tailwind.config.js:
+```
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+```
 
 <br>
 
