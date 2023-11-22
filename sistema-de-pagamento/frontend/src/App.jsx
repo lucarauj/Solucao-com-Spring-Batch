@@ -9,7 +9,6 @@ function App() {
   const fetchTransactions = async() => {
     const response = await axios.get("http://localhost:8080/transacoes")
     setTransactions(response.data);
-    console.log(response.data);
   }
 
   const handleFileChange = (e) => {
@@ -21,7 +20,7 @@ function App() {
     formData.append('file', file);
     axios.post("http://localhost:8080/cnab/upload", formData, {
       headers: {
-        'Content-Type': 'multpart/form-data'
+        'Content-Type': 'multipart/form-data'
       }
     });
   }
