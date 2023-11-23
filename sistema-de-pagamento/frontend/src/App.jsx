@@ -42,8 +42,8 @@ function App() {
       <div>
         <h2>Transações</h2>
         <ul>
-          {transactions.map((report, key) => (
-              <li>
+          {transactions.map((report, reportKey) => (
+              <li key={reportKey}>
               <table>
                 <thead>
                   <tr>
@@ -58,8 +58,8 @@ function App() {
                   </tr>
                 </thead>
                 <tbody>
-                  {report.transacoes.map((transacao, key) => (
-                    <tr>
+                  {report.transacoes.map((transacao, transacaoKey) => (
+                    <tr key={transacaoKey}>
                     <td>{transacao.cartao}</td>
                     <td>{transacao.cpf}</td>
                     <td>{transacao.data}</td>
